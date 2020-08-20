@@ -46,13 +46,28 @@ export class Quiz extends Component {
     this.loadQuiz();
   }
 
-  //   userAnswer assigned only when u click on option from nextQuestionHandler
-  // funct to assign Answer from user to setState so then we could check it
-  checkAnswer=answer=>{
-      this.setState({
-          userAnswer:answer,
-          disableBtn:true
-      })
+  checkAnswer = (answer) => {
+    this.setState({
+      userAnswer: answer,
+      disableBtn: false,
+    });
+  };
+
+  //   we need to set new question and disable next btn by using componentDidUpdate which will be call whenever update a state
+  componentDidUpdate(prevProps, prevState) {
+    // getting new currentIndex
+    const { currentIndex } = this.state;
+    // if currentIndex change set a new question
+    if (this.state.currentIndex !== prevState.currentIndex) {
+      // load new box of questions
+      this.setState(() => {
+        return {
+          question: QuizData[currentIndex].question,
+          options: QuizData[currentIndex].options,
+          answer: QuizData[currentIndex].answer,
+        };
+      });
+    }
   }
 
   render() {
