@@ -66,6 +66,21 @@ export class Quiz extends Component {
     }
   }
 
+  //   fnc to finish quiz by press btn and also inc score instead of nextBtn
+  finishHandler = () => {
+    const { userAnswer, answer, score } = this.state;
+    if (userAnswer === answer) {
+      this.setState({
+        score: score + 1,
+      });
+    }
+    if (this.state.currentQuestion === QuizData.length - 1) {
+      this.setState({
+        quizEnd: true,
+      });
+    }
+  };
+
   render() {
     const {
       question,
@@ -73,19 +88,13 @@ export class Quiz extends Component {
       currentQuestion,
       userAnswer,
       quizEnd,
+      score,
     } = this.state;
     return (
       <div>
+        <h2>Your score is: {score}</h2>
         <h2>{question}</h2>
         <span>{`Question ${currentQuestion + 1} of ${QuizData.length}`}</span>
-        {/* we need to display list of items like options use .map */}
-
-        {/* for each of the option make a new <p> */}
-
-        {/* then if user presed btn change class to selected */}
-        {/* if userAnswer === option then apply selected class else null */}
-
-        {/* then onClick run fnc to run fnc with option to checkAnswer */}
         {options.map((option) => (
           <p
             key={option.id}
@@ -95,6 +104,27 @@ export class Quiz extends Component {
             {option}{" "}
           </p>
         ))}
+
+        {/* display nextBtn if currentQuestion < then data.length -1 because from 0 starts*/}
+        {/* apply style disableBtn if disable */}
+        {currentQuestion < QuizData.length - 1 && (
+          <button
+            disableBtn={this.state.disableBtn}
+            onClick={this.state.nextQuestionHandler}
+          >
+            Next Question
+          </button>
+        )}
+        {/* if currentQuestion last will display finish btn and apply style to it by disableBtn */}
+        {currentQuestion === QuizData.length - 1 && (
+          <button
+            onClick={this.finishHandler}
+            disableBtn={this.state.disableBtn}
+          >
+            {" "}
+            Finish
+          </button>
+        )}
       </div>
     );
   }
