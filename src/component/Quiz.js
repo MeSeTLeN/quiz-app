@@ -41,9 +41,18 @@ export class Quiz extends Component {
       userAnswer: null,
     });
   };
-  //   we need to say load fist question loadQuiz before component load thats why componentDidMount
+
   componentDidMount() {
     this.loadQuiz();
+  }
+
+  //   userAnswer assigned only when u click on option from nextQuestionHandler
+  // funct to assign Answer from user to setState so then we could check it
+  checkAnswer=answer=>{
+      this.setState({
+          userAnswer:answer,
+          disableBtn:true
+      })
   }
 
   render() {
