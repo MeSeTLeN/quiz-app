@@ -77,8 +77,24 @@ export class Quiz extends Component {
     return (
       <div>
         <h2>{question}</h2>
-        {/* display current question from existing */}
         <span>{`Question ${currentQuestion + 1} of ${QuizData.length}`}</span>
+        {/* we need to display list of items like options use .map */}
+
+        {/* for each of the option make a new <p> */}
+
+        {/* then if user presed btn change class to selected */}
+        {/* if userAnswer === option then apply selected class else null */}
+
+        {/* then onClick run fnc to run fnc with option to checkAnswer */}
+        {options.map((option) => (
+          <p
+            key={option.id}
+            className={`options ${userAnswer === option ? "selected" : null}`}
+            onClick={() => this.checkAnswer(option)}
+          >
+            {option}{" "}
+          </p>
+        ))}
       </div>
     );
   }
