@@ -27,24 +27,25 @@ export class Quiz extends Component {
     });
   };
 
-  //   new func it do increment currentIndex and if userAnswer correct increment score
   nextQuestionHandler = () => {
-    // retrive value of those things
     const { userAnswer, answer, score } = this.state;
 
-    // check correct answer and increase score if correct
-    if (userAnswer=== answer){
-        this.setState({
-            score: score + 1
-        })
+    if (userAnswer === answer) {
+      this.setState({
+        score: score + 1,
+      });
     }
 
-    // increse currentIndex by 1 and reset user answer
     this.setState({
-        currentIndex: this.state.currentIndex + 1
-        userAnswer: null
-    })
+      currentIndex: this.state.currentIndex + 1,
+      userAnswer: null,
+    });
   };
+  //   we need to say load fist question loadQuiz before component load thats why componentDidMount
+  componentDidMount() {
+    this.loadQuiz();
+  }
+
   render() {
     return <div></div>;
   }
