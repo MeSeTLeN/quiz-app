@@ -16,13 +16,13 @@ export class Quiz extends Component {
   }
 
   loadQuiz = () => {
-    const { currentIndex } = this.state;
+    const { currentQuestion } = this.state;
 
     this.setState(() => {
       return {
-        question: QuizData[currentIndex].question,
-        options: QuizData[currentIndex].options,
-        answer: QuizData[currentIndex].answer,
+        question: QuizData[currentQuestion].question,
+        options: QuizData[currentQuestion].options,
+        answer: QuizData[currentQuestion].answer,
       };
     });
   };
@@ -37,7 +37,7 @@ export class Quiz extends Component {
     }
 
     this.setState({
-      currentIndex: this.state.currentIndex + 1,
+      currentQuestion: this.state.currentQuestion + 1,
       userAnswer: null,
     });
   };
@@ -54,20 +54,20 @@ export class Quiz extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const { currentIndex } = this.state;
-    if (this.state.currentIndex !== prevState.currentIndex) {
+    const { currentQuestion } = this.state;
+    if (this.state.currentQuestion !== prevState.currentQuestion) {
       this.setState(() => {
         return {
-          question: QuizData[currentIndex].question,
-          options: QuizData[currentIndex].options,
-          answer: QuizData[currentIndex].answer,
+          question: QuizData[currentQuestion].question,
+          options: QuizData[currentQuestion].options,
+          answer: QuizData[currentQuestion].answer,
         };
       });
     }
   }
 
   render() {
-    const { question, options, currentIndex, userAnswer, quizEnd } = this.state;
+    const { question, options, currentQuestion, userAnswer, quizEnd } = this.state;
     return (
       <div>
         {/* displaying question tab */}
