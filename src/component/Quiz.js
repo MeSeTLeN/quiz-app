@@ -89,6 +89,25 @@ export class Quiz extends Component {
       quizEnd,
       score,
     } = this.state;
+
+    // if quizEnd true so render question and correct answer by map them
+    if (quizEnd) {
+      return (
+        <div>
+          <h1>Game Over. Final score is {this.state.score} points</h1>
+          <p>The correct Answers for the quiz are</p>
+          <div>
+            {QuizData.map((item, index) => (
+              <div className="options" key={index}>
+                <div>question: {item.question}</div>
+                <div>answer: {item.answer}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div>
         <h2>Your score is: {score}</h2>
