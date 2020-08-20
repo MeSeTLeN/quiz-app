@@ -53,13 +53,9 @@ export class Quiz extends Component {
     });
   };
 
-  //   we need to set new question and disable next btn by using componentDidUpdate which will be call whenever update a state
   componentDidUpdate(prevProps, prevState) {
-    // getting new currentIndex
     const { currentIndex } = this.state;
-    // if currentIndex change set a new question
     if (this.state.currentIndex !== prevState.currentIndex) {
-      // load new box of questions
       this.setState(() => {
         return {
           question: QuizData[currentIndex].question,
@@ -71,6 +67,8 @@ export class Quiz extends Component {
   }
 
   render() {
+    //   first get all state what need
+    const { question, options, currentIndex, userAnswer, quizEnd } = this.state;
     return <div></div>;
   }
 }
