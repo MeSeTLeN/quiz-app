@@ -67,11 +67,18 @@ export class Quiz extends Component {
   }
 
   render() {
-    const { question, options, currentQuestion, userAnswer, quizEnd } = this.state;
+    const {
+      question,
+      options,
+      currentQuestion,
+      userAnswer,
+      quizEnd,
+    } = this.state;
     return (
       <div>
-        {/* displaying question tab */}
         <h2>{question}</h2>
+        {/* display current question from existing */}
+        <span>{`Question ${currentQuestion + 1} of ${QuizData.length}`}</span>
       </div>
     );
   }
