@@ -66,7 +66,6 @@ export class Quiz extends Component {
     }
   }
 
-  //   fnc to finish quiz by press btn and also inc score instead of nextBtn
   finishHandler = () => {
     const { userAnswer, answer, score } = this.state;
     if (userAnswer === answer) {
@@ -104,18 +103,14 @@ export class Quiz extends Component {
             {option}{" "}
           </p>
         ))}
-
-        {/* display nextBtn if currentQuestion < then data.length -1 because from 0 starts*/}
-        {/* apply style disableBtn if disable */}
         {currentQuestion < QuizData.length - 1 && (
           <button
             disableBtn={this.state.disableBtn}
-            onClick={this.state.nextQuestionHandler}
+            onClick={this.nextQuestionHandler}
           >
             Next Question
           </button>
         )}
-        {/* if currentQuestion last will display finish btn and apply style to it by disableBtn */}
         {currentQuestion === QuizData.length - 1 && (
           <button
             onClick={this.finishHandler}
