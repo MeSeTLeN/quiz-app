@@ -97,10 +97,10 @@ export class Quiz extends Component {
           <h1>Game Over. Final score is {this.state.score} points</h1>
           <p>The correct Answers for the quiz are</p>
           <div>
-            {QuizData.map((item, index) => (
-              <div className="options" key={index}>
-                <div>question: {item.question}</div>
-                <div>answer: {item.answer}</div>
+            {QuizData.map((objIndex) => (
+              <div className="options" key={objIndex}>
+                <div>question: {objIndex.question}</div>
+                <div>answer: {objIndex.answer}</div>
               </div>
             ))}
           </div>
