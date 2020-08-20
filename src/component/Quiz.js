@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import QuizData from "../Data/QuizData";
+import { QuizData } from "../Data/QuizData";
 
 export class Quiz extends Component {
   constructor(props) {
@@ -67,9 +67,13 @@ export class Quiz extends Component {
   }
 
   render() {
-    //   first get all state what need
     const { question, options, currentIndex, userAnswer, quizEnd } = this.state;
-    return <div></div>;
+    return (
+      <div>
+        {/* displaying question tab */}
+        <h2>{question}</h2>
+      </div>
+    );
   }
 }
 

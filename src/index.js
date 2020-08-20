@@ -1,11 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.scss";
+import Quiz from "./component/Quiz";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+function App() {
+  return (
+    <div>
+      <Quiz />
+    </div>
+  );
+}
+
+export default App;
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App></App>, rootElement);
